@@ -1,15 +1,14 @@
 require "rails_helper"
 
-feature "User Submits a Buddy", %q(
+feature "User Submits a manufacturer", %q(
 As an authenticated user
-I want to submit a buddy
-So that I can share my finding with other users
+I want to submit a manufacturer
+So that I can select this manufacturer when i input a vehicle
 
 Acceptance Criteria
-[ ] Go to buddies/new to fill out form
-[ ] User must enter title
-[ ] User must enter description
-[ ] User must enter url
+[ ] Go to manufaturer/new to fill out form
+[ ] User must enter name
+[ ] User must enter country
 
 ) do
 
@@ -23,29 +22,31 @@ Acceptance Criteria
       click_button "Log in"
     end
 
-    scenario "user successfully submits a buddy and reads buddy from root_path" do
+    scenario "user successfully submits a manufacturer" do
 
       visit root_path
-      click_link "Create New Buddy"
-      fill_in "Title", with: "Descriptive Title"
-      fill_in "Description", with: "this buddy is very descriptive"
-      fill_in "Url", with: "http://www.google.com"
+      click_link "Create New Manufacturer"
+      fill_in "Name", with: "Maserati"
+      fill_in "Country", with: "Italy"
 
-      click_button "Submit Buddy"
-      expect(page).to have_content("You've successfully submitted a buddy!")
-      expect(page).to have_content("Descriptive Title")
-      expect(page).to have_content("this buddy is very descriptive")
-      expect(page).to have_content("http://www.google.com")
+      click_button "Submit Manufacturer"
+      expect(page).to have_content("You've successfully submitted a manufacturer!")
+      expect(page).to have_content("Maserati")
+      expect(page).to have_content("Italy")
 
-      click_link "Code Buddy"
-      expect(page).to have_content("Descriptive Title")
+      click_link "CarListing"
+      expect(page).to have_content("Maserati")
     end
-  end
 
-  context "unauthenticated user" do
-    scenario "user tries to submit buddy when not signed in" do
-      visit new_buddy_path
-      expect(page).to have_content("You need to sign in or sign up before continuing.")
+    scenario "user unsuccessfully submits a manufacturer" do
+
+      visit root_path
+      click_link "Create New Manufacturer"
+      fill_in "Name", with: ""
+      fill_in "Country", with: "Germany"
+
+      click_button "Submit Manufacturer"
+      expect(page).to have_content("Fail")
     end
   end
 end

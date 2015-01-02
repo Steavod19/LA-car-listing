@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
+gem 'simple_form'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
@@ -43,6 +44,7 @@ end
 
 
 gem 'rspec-rails', group: [:development, :test]
+gem 'rails-pry', group: [:development, :test]
 gem 'capybara', group: [:development, :test]
 gem 'launchy', group: [:development, :test]
 gem 'factory_girl', group: [:development, :test]

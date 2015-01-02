@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
-  root 'homes#index'
+  root 'manufacturers#index'
   devise_for :users
+  resources :manufacturers
+  resources :cars
+
+  # resources :manufacturers do
+  #   resources :cars
+  # end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

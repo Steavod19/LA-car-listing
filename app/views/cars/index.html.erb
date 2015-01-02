@@ -1,0 +1,10 @@
+<ul>
+<% @cars.each do |car| %>
+
+  <li><%= link_to car.manufacturer.name, car %>,
+    <%= link_to car.color, car %>,
+    <%= link_to car.year, car %>,
+    <%= link_to car.mileage, car %>
+  </li>
+<% end %>
+</ul>
